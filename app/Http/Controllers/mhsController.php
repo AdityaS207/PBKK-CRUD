@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\mhs;
+use App\Http\Requests\mhs\StoreRequest;
+use App\Http\Requests\mhs\UpdateRequest;
 
 class mhsController extends Controller
 {
@@ -18,7 +20,7 @@ class mhsController extends Controller
         return view('mhs.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $mhs = new mhs();
         $mhs->nama = $request->nama;
@@ -41,7 +43,7 @@ class mhsController extends Controller
         return view('mhs.edit', compact('mhs'));
     }
 
-    public function update(Request $request, string $id)
+    public function update(UpdateRequest $request, string $id)
     {
         $mhs = mhs::find($id);
         $mhs->nama = $request->nama;
