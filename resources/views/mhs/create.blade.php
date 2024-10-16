@@ -7,6 +7,13 @@
 </head>
 <body>
 <div class="container mt-5">
+    @if ($errors->any())
+    <div class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+    </div>
+    @endif
     <h1 class="mb-4">Create Mahasiswa</h1>
     <form action="{{ route('mhs.store') }}" method="POST">
         @csrf
@@ -23,6 +30,7 @@
             <input type="text" id="alamat" name="alamat" class="form-control">
         </div>
         <button type="submit" class="btn btn-primary">Save</button>
+        <a href="{{ route('mhs.index') }}" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
 </body>

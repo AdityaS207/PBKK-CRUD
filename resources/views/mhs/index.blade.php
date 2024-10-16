@@ -7,6 +7,13 @@
 </head>
 <body>
 <div class="container mt-5">
+    @if ($errors->any())
+    <div class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+    </div>
+    @endif
     <h1 class="mb-4">Mahasiswa List</h1>
     <a href="{{ route('mhs.create') }}" class="btn btn-primary mb-3">Create New Mahasiswa</a>
     <table class="table table-bordered">
